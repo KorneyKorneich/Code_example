@@ -28,17 +28,16 @@ app.post('/api/registration', upload.none(), (req, res) => {
         errors.name = "Имя не введено";
     }
     if (!email) {
-        errors.email = "Поле 'email' не заполнено";
+        errors.email = "Введите Email";
     }
     if (!phone) {
-        errors.phone = "Поле 'phone' не заполнено";
+        errors.phone = "Введите мобильный телефон";
     }
     if (!msg) {
-        errors.msg = "Поле 'msg' не заполнено";
+        errors.msg = "Введите текст сообщения";
     }
 
     if (Object.keys(errors).length > 0) {
-        // Действия, если есть ошибки
         res.status(400).send({
             status: 'error',
             fields: errors
