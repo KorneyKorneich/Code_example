@@ -1,8 +1,7 @@
-import './styles/form/form.scss'
-import './styles/globals/global.scss'
+import './styles/index.scss'
 import {Form} from "./form/form";
 
-const form = new Form();
+new Form();
 
 
 

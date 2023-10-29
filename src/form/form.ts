@@ -3,6 +3,7 @@ import {request} from "../sendRequest/sendRequest";
 import {RequestType} from "../types/requestType";
 import {ResponseType} from "../types/responseType";
 import {ErrorFields} from "../types/errorFields";
+import {showModal} from "../modal/modal";
 
 export class Form {
 
@@ -19,7 +20,7 @@ export class Form {
     fields = [this.nameField, this.emailField, this.phoneField, this.msgField]
 
     sendButton = document.getElementById('send') as HTMLInputElement;
-    modalButton = document.getElementById('modal') as HTMLInputElement;
+    modalButton = document.getElementById('modal_btn') as HTMLInputElement;
 
 
     constructor() {
@@ -46,7 +47,7 @@ export class Form {
     };
 
     handleModalButtonClick = () => {
-
+        showModal();
     };
 
     handleResponse = (res: ResponseType) => {
@@ -88,23 +89,10 @@ export class Form {
         }
     }
 
-
-
     applyPhoneMask() {
         const inputElement = document.getElementById('phone') as HTMLInputElement;
         if (inputElement) {
             Inputmask({ mask: '+375 (99) 999-99-99' }).mask(inputElement);
-        }
-    };
-
-
-
-    checkField() {
-        for (const field of this.fields) {
-            if(field.value === ''){
-                field.classList.add('err');
-                field.addEventListener("change", this.handleFixWrongInput)
-            }
         }
     };
 }
