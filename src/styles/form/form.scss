@@ -4,7 +4,7 @@
   align-items: center;
   height: 100%;
 }
-#log_in_form{
+.log_in_form{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +15,10 @@
   -webkit-box-shadow: 13px 13px 10px 0 rgba(34, 60, 80, 0.27);
   -moz-box-shadow: 13px 13px 10px 0 rgba(34, 60, 80, 0.27);
   box-shadow: 13px 13px 10px 0 rgba(34, 60, 80, 0.27);
+
+  #success-message{
+    color: forestgreen;
+  }
 
   h1{
     font-size: 24px;
@@ -30,6 +34,11 @@
     div{
       margin-top: 10px;
       width: 100%;
+
+      .error-message{
+        color: #EE5757;
+        font-size: small;
+      }
     }
 
     input{
@@ -41,9 +50,9 @@
 
     }
     textarea{
-      width: 100%;
+      width: 90%;
       height: 50px;
-      padding: 0;
+      padding: 0 5%;
       border-radius: 5px;
       resize: none;
     }
@@ -80,6 +89,20 @@
         background: linear-gradient(to right, #CC3D3D, rgba(224, 114, 45, 1)); /* измените цвета, чтобы достичь желаемого эффекта */
       }
     }
-
   }
 }
+
+.success {
+  -webkit-box-shadow: 14px 14px 7px 0 rgba(16, 154, 50, 0.23); /* Изменение свойств тени для класса success */
+  -moz-box-shadow: 14px 14px 7px 0 rgba(16, 154, 50, 0.23); /* Изменение свойств тени для класса success */
+  box-shadow: 14px 14px 7px 0 rgba(16, 154, 50, 0.23); /* Изменение свойств тени для класса success */
+  flex-wrap: wrap;
+
+  h1 {
+    color: #41a82d;
+  }
+}
+
+
+
+

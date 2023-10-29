@@ -1,39 +1,56 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
-const app = express();
+const multer = require("multer");
 
+const upload = multer();
+const app = express();
 const port = 9090;
 
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.post("/api/registration", (req, res) => {
-    if (Math.random() > 0.5) {
-        res.statusCode = 400;
 
-        setTimeout(() => {
-            res.send({
-                    "status": "error",
-                    "fields": {
-                        "inputName": "Неверное имя",
-                        "inputEmail": "Неверный email",
-                        "inputPhone": "Неверный номер телефона",
-                        "inputMSG": "Поле не может быть пустым",
-                    }
-                }
-            );
-        }, Math.random() * 1000);
+app.post('/api/registration', upload.none(), (req, res) => {
+    console.log('Получен POST-запрос на /api/registration');
+    console.log('Тело запроса:');
+    console.log(req.body);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        return;
+
+
+    const { name, email, phone, msg } = req.body;
+    const errors = {};
+    if (!regex.test(email) && email !== '') {
+        errors.email = "Поле заполнено неверно";
+    }
+    if (!name) {
+        errors.name = "Имя не введено";
+    }
+    if (!email) {
+        errors.email = "Поле 'email' не заполнено";
+    }
+    if (!phone) {
+        errors.phone = "Поле 'phone' не заполнено";
+    }
+    if (!msg) {
+        errors.msg = "Поле 'msg' не заполнено";
     }
 
-    setTimeout(() => {
-        res.statusCode = 200;
-        res.send({
-            status: "success",
-            message: "You are registered",
+    if (Object.keys(errors).length > 0) {
+        // Действия, если есть ошибки
+        res.status(400).send({
+            status: 'error',
+            fields: errors
         });
-    }, Math.random() * 1000);
+    } else {
+        res.status(200).send({
+            status: 'success',
+            message:'Данные успешно получены и обработаны!'
+        });
+    }
 });
+
 
 app.get("/api/ping", (req, res) => {
     res.statusCode = 200;

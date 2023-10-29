@@ -1,8 +1,10 @@
 import './styles/form/form.scss'
 import './styles/globals/global.scss'
-import {Form} from "./formValidate/form";
+import {Form} from "./form/form";
 
 const form = new Form();
+
+
 
 
 

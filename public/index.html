@@ -9,24 +9,29 @@
 </head>
 <body>
 <div class="wrapper">
-    <div id="log_in_form">
-        <h1>Отправьте вашу заявку</h1>
+    <div class="log_in_form">
+        <h1 id="header">Отправьте вашу заявку</h1>
+        <div id="success_message"></div>
         <div class="inputs">
             <div>
                 <span>Имя</span>
                 <input id="name" type="text">
+                <div id="nameError" class="error-message"></div>
             </div>
             <div id="emailBlock">
                 <span>Email</span>
                 <input id="email" type="email">
+                <div id="emailError" class="error-message"></div>
             </div>
             <div>
                 <span>Мобильный телефон</span>
                 <input id="phone" type="text" placeholder="+375 (__) ___-__-__">
+                <div id="phoneError" class="error-message"></div>
             </div>
             <div>
                 <span>Сообщение</span>
                 <textarea id="msg"></textarea>
+                <div id="msgError" class="error-message"></div>
             </div>
         </div>
         <div class="buttons">
